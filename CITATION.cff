@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: "Agentic Financial Intelligence — Paper Artifacts"
+message: "If you use these artifacts, please cite this repository and the Zenodo record."
+type: software
+authors:
+  - family-names: Arroyo
+    given-names: Giovanni
+  - family-names: Millen
+    given-names: Lawrence
+version: paper-2025-v2
+date-released: 2025-08-12
+repository-code: "https://github.com/AFI-Protocol/afi-artifacts"
+license: MIT

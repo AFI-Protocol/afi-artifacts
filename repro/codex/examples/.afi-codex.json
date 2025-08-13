@@ -1,0 +1,6 @@
+{
+  "epoch": "2025-08-12T00:00:00Z",
+  "scorers": ["SignalScorer/1.0"],
+  "validators": ["validator:agent_mcp_001"],
+  "replay": { "seed": 42, "deterministic": true }
+}

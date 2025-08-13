@@ -1,0 +1,22 @@
+{
+  "title": "Agentic Financial Intelligence \u2014 Paper Artifacts",
+  "upload_type": "software",
+  "publication_date": "2025-08-12",
+  "creators": [
+    {
+      "name": "Arroyo, Giovanni"
+    },
+    {
+      "name": "Millen, Lawrence"
+    }
+  ],
+  "license": "mit",
+  "access_right": "open",
+  "description": "Versioned artifact bundle accompanying the paper: schema snapshots, vault-ready sample, codex example, and minimal replay stub.",
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/AFI-Protocol/afi-artifacts/releases/tag/paper-2025-v2"
+    }
+  ]
+}
