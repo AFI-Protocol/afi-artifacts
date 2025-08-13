@@ -1,118 +1,113 @@
-# AFI Artifacts — Paper Reproducibility Bundle
+# AFI Artifacts — Paper Reproducibility Bundle (snapshot: paper-2025-v2.1)
 
-This repository hosts the **frozen, citable artifacts** that accompany the paper **_Agentic Financial Intelligence_**.  
-It’s designed so reviewers and readers can verify the claims in the paper without cloning multiple codebases.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16857347.svg)](https://doi.org/10.5281/zenodo.16857347)
+**Release tag:** [`paper-2025-v2.1`](https://github.com/AFI-Protocol/afi-artifacts/releases/tag/paper-2025-v2.1)
 
-> If you're here from SSRN/arXiv: start with the **Releases** page for the `paper-2025-v2` bundle.
+> **Heads-up (to avoid confusion):** The **release asset ZIP** contains the *canonical* bundle used in the paper.  
+> The **repo tree at tag v2.1** (and the Zenodo snapshot of that tag) reflects an **earlier layout** with different filenames.  
+> Both contain equivalent information; the names just differ. A mapping is provided below.
 
 ---
 
-## What’s in this repo?
+## What’s in this repo (actual v2.1 snapshot)
 
 ```
 repro/
-  README.md                        # how to use this bundle
-  schemas/
-    universal_signal_ingestion.schema.json   # Appendix A.1
-    vaulted_tssd.schema.json                 # Appendix A.2
-    universal_proposal_schema.json           # Appendix A.3
   codex/
-    .afi-codex.json                 # hidden file (macOS/Linux); cited in the paper
-    afi-codex.json                  # visible twin; identical content for convenience
+    afi-codex.json
   data/
     examples/
-      vault-ready-record.jsonl      # Appendix B canonical example
-      valid-proposal.json           # governance example
+      valid-proposal.json
+      sample_tssd.json
+  schemas/
+    UNIVERSAL_PROPOSAL_SCHEMA.md
+    universal_proposal_schema.mjs
+    universal_signal_schema.mjs
+    vaulted_signal_schema.mjs
   tests/
-    replay_smoke_test.md            # quick verification steps
-  SHA256SUMS                        # integrity hashes for every file in repro/
-paper/
-  AFI_SSRN_SSRNready.pdf            # (optional) paper PDF for convenience
+    README.md
+  tools/
+    replay/
+      afi-replay.js
 ```
 
-- The **Releases** section also provides a zipped copy of this tree (the *Repro Pack*), tied to a specific tag for reproducibility.
-- **No private keys, API tokens or internal endpoints** are stored here.
-
 ---
 
-## Quick start
+## Canonical bundle (in the release ZIP)
 
-1. Download the **`paper-2025-v2`** release assets (ZIP + checksum).
-2. Unzip and browse `repro/` — schemas, examples, codex.
-3. Open `repro/README.md` and follow the **Replay Smoke Test**.
+The *release asset* for v2.1 contains the canonical bundle referenced in the paper:
 
-> Hidden files note: macOS Finder hides dotfiles by default. Press **⌘ Shift .** to toggle visibility and see `.afi-codex.json`.
-
----
-
-## Verify integrity (recommended)
-
-```bash
-# macOS (built-in)
-shasum -a 256 afi-paper-artifact-bundle.zip
-
-# Linux (coreutils)
-sha256sum afi-paper-artifact-bundle.zip
-
-# Compare the output with the matching line in repro/SHA256SUMS
+```
+repro/
+  README.md
+  schemas/
+    universal_signal_ingestion.schema.json
+    vaulted_tssd.schema.json
+    universal_proposal_schema.json
+  codex/
+    .afi-codex.json      # hidden on macOS/Linux
+    afi-codex.json       # visible twin; identical content
+  data/
+    examples/
+      vault-ready-record.jsonl
+      valid-proposal.json
+  tests/
+    replay_smoke_test.md
+  SHA256SUMS
 ```
 
-Matching hashes confirm the ZIP you downloaded is identical to the one we published.
+---
+
+## Name mapping: paper ↔ v2.1 snapshot
+
+- `repro/schemas/universal_signal_ingestion.schema.json`  ↔  `repro/schemas/universal_signal_schema.mjs`
+- `repro/schemas/vaulted_tssd.schema.json`                ↔  `repro/schemas/vaulted_signal_schema.mjs`
+- `repro/schemas/universal_proposal_schema.json`          ↔  `repro/schemas/universal_proposal_schema.mjs` (+ doc: `UNIVERSAL_PROPOSAL_SCHEMA.md`)
+- `repro/data/examples/vault-ready-record.jsonl`          ↔  `repro/data/examples/sample_tssd.json`
+- `repro/tests/replay_smoke_test.md`                      ↔  `repro/tests/README.md`
+- `.afi-codex.json` (hidden)                              ↔  `repro/codex/afi-codex.json` (visible)
+
+**Implication for readers:** If you’re browsing the repo or Zenodo snapshot, use the **right-hand** names above.  
+If you’re following the **paper** or the **release ZIP**, use the **left-hand** names.
 
 ---
 
-## Appendix → Repository map
+## Quick start (recommended path)
 
-- **Appendix A: Schema Specification Snapshots**
-  - **A.1** Universal Signal (ingestion): `repro/schemas/universal_signal_ingestion.schema.json`
-  - **A.2** Vaulted T.S.S.D.: `repro/schemas/vaulted_tssd.schema.json`
-  - **A.3** Universal Proposal: `repro/schemas/universal_proposal_schema.json`
-- **Appendix B: Vault-Ready Record (single example)**  
-  `repro/data/examples/vault-ready-record.jsonl`
-- **Appendix C: Codex / Replay Manifest (example)**  
-  `repro/codex/.afi-codex.json` (hidden) and `repro/codex/afi-codex.json` (visible)
-- **Appendix D / E (Policy Note, EU AI Act timeline):** live in the paper PDF.
-
----
-
-## Reproducible replay (minimal)
-
-1. Inspect `repro/codex/.afi-codex.json` (or `afi-codex.json`).  
-2. Validate `repro/data/examples/vault-ready-record.jsonl` against `repro/schemas/vaulted_tssd.schema.json`.  
-3. Run your own scorer/validator stack with the example; record outputs + attestations.  
-4. Confirm you can reconstruct the decision trail using the codex manifest.
-
-> This repo provides **specs and examples**; it does not ship proprietary models or production keys.
+1. Download the **release asset ZIP** for [`paper-2025-v2.1`](https://github.com/AFI-Protocol/afi-artifacts/releases/tag/paper-2025-v2.1).
+2. Verify integrity (optional):
+   ```bash
+   shasum -a 256 afi-paper-artifact-bundle__paper-2025-v2.zip
+   # Expected: f2a69461c536cb82541d6f0e3d568c6b93dd4894fc6d1f5bba04cf7ddec3c533
+   ```
+3. Unzip and open `repro/README.md` for instructions and the Replay Smoke Test.
+4. On macOS Finder, press **⌘⇧.** to reveal hidden files like `.afi-codex.json`.
 
 ---
 
-## Versioning & releases
+## Appendix → Repository map (for the **v2.1 snapshot**)
 
-- Each paper-ready snapshot is published as a **tagged release** (e.g., `paper-2025-v2`) with a zipped **Repro Pack** attached.
-- The repository tree mirrors the same content for easy browsing.
-- When we need to publish minor documentation fixes without altering the cited artifacts, we’ll use a dot-suffix (e.g., `paper-2025-v2.1`).
+- **Appendix A (Schema snapshots)**
+  - A.1 Universal Signal (ingestion): `repro/schemas/universal_signal_schema.mjs`
+  - A.2 Vaulted T.S.S.D.: `repro/schemas/vaulted_signal_schema.mjs`
+  - A.3 Universal Proposal: `repro/schemas/universal_proposal_schema.mjs`  
+    (doc: `repro/schemas/UNIVERSAL_PROPOSAL_SCHEMA.md`)
+- **Appendix B (Vault-ready example)**: `repro/data/examples/sample_tssd.json`
+- **Appendix C (Codex / Replay manifest)**: `repro/codex/afi-codex.json`
+- **Appendix D/E** live in the paper PDF.
 
 ---
 
 ## Citation
 
-Cite the paper and (if available) the Zenodo DOI for this artifact bundle:
-
-- AFI-Protocol (2025). **AFI Paper Artifact Bundle (paper-2025-v2)**. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX  
-- _Agentic Financial Intelligence_. (SSRN / arXiv)
+- AFI-Protocol (2025). **AFI Paper Artifact Bundle (paper-2025-v2.1)** [Software]. Zenodo. https://doi.org/10.5281/zenodo.16857347  
+- *Agentic Financial Intelligence* (SSRN / arXiv)
 
 A `CITATION.cff` file is included for citation managers.
 
 ---
 
-## License
+## Why not retag?
 
-Unless otherwise noted, content in this repository is released under the **MIT License** (see `LICENSE`).  
-Schemas/examples are provided “as-is” for research and reproducibility.
-
----
-
-## Questions / issues
-
-Please open a GitHub issue with a minimal reproduction (schema + example) and we’ll take a look.  
-PRs improving documentation or adding validation instructions are welcome.
+We could re-cut a `paper-2025-v2.2` so the **repo tree / Zenodo archive** match the **canonical filenames** exactly.  
+That would mint a **new DOI**. To keep the DOI stable, we’re documenting the mapping here.
