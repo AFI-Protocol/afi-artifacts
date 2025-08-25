@@ -1,4 +1,4 @@
-# AFI Paper Repro Pack (paper-2025-v2.1)
+# AFI Paper Repro Pack (paper-2025-v2.2)
 
 This bundle contains the minimal replication artifacts referenced in *Agentic Financial Intelligence* (SSRN Q3 2025).  
 It is a **validation pack**: schemas, example records, Codex manifest, and a deterministic mock replay.  
@@ -24,3 +24,12 @@ echo "All JSONL lines valid ✅"
 
 # Optional: deterministic mock replay
 node tests/mock_replay.js
+```
+
+## Versioning & Citation
+**Version:** `paper-2025-v2.2`  
+**Citation:** Please cite the **versioned Zenodo DOI (v2.2)**.
+
+## Codex Note
+The Codex manifest is provided as both `.afi-codex.json` (hidden) and `afi-codex.json` (visible).  
+They are identical; cite the hidden form to match the paper, but reviewers may prefer the visible file for convenience.
