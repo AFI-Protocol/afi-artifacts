@@ -1,23 +1,28 @@
 {
-  "signal_type": "governance_proposal",
-  "proposal_id": "123e4567-e89b-12d3-a456-426614174000",
-  "proposed_by": "afi.governance.0012",
-  "timestamp": "2025-06-29T19:00:00Z",
-  "version_target": "AOS v1.1.0",
-  "title": "Revoke credential for agent scoring.0042",
-  "description": "Agent failed compliance 3 times consecutively.",
-  "justification": "Maintain integrity of scoring layer.",
-  "affected_modules": [
-    "agent_registry"
-  ],
-  "proposed_mutations": {
-    "field": "compliance_status",
-    "action": "update",
-    "new_value": "revoked"
+  "proposalId": "1b2c3d4e-1111-2222-3333-444455556666",
+  "title": "Calibrate Epoch Pulse Parameters",
+  "description": "Adjust pulse and challenge window for volatility regime shift.",
+  "proposer": "validator-a",
+  "submissionTimestamp": 1754784000000,
+  "category": "governance",
+  "body": {
+    "context": "Observed coordinated slippage under current pulse.",
+    "specification": "Set pulse=180s, challengeWindow=120s.",
+    "affectedModules": [
+      "epoch-coordinator",
+      "governance-emitter"
+    ],
+    "compatibilityNotes": "Backward compatible."
   },
-  "dependencies": [],
-  "proposal_type": "meta",
-  "urgency_level": "high",
-  "compliance_check": true,
-  "signature": "0xabcd..."
+  "validatorSignatures": [],
+  "voting": {
+    "method": "weighted",
+    "quorum": 0.6,
+    "threshold": 0.66,
+    "openTime": 1754784060,
+    "closeTime": 1754784660,
+    "votes": []
+  },
+  "status": "draft",
+  "version": "0.1"
 }

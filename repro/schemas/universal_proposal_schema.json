@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UniversalProposal",
+  "type": "object",
+  "required": [
+    "proposalId",
+    "title",
+    "description",
+    "proposer",
+    "submissionTimestamp",
+    "category",
+    "body",
+    "voting",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "proposalId": {
+      "type": "string",
+      "description": "uuid"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "proposer": {
+      "type": "string"
+    },
+    "submissionTimestamp": {
+      "type": "number"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "governance",
+        "signal",
+        "model",
+        "policy",
+        "compliance",
+        "infrastructure"
+      ]
+    },
+    "body": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "string"
+        },
+        "specification": {
+          "type": "string"
+        },
+        "affectedModules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "compatibilityNotes": {
+          "type": "string"
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "validatorSignatures": {
+      "type": "array"
+    },
+    "voting": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "quorum": {
+          "type": "number"
+        },
+        "threshold": {
+          "type": "number"
+        },
+        "openTime": {
+          "type": "number"
+        },
+        "closeTime": {
+          "type": "number"
+        },
+        "votes": {
+          "type": "array"
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "validated",
+        "voting",
+        "approved",
+        "rejected",
+        "executed",
+        "archived"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "enum": [
+        "0.1"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UniversalSignalIngestionSnapshot",
+  "type": "object",
+  "required": [
+    "id",
+    "symbol",
+    "market",
+    "action",
+    "price",
+    "timestamp",
+    "source"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "market": {
+      "type": "string",
+      "description": "free-form"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "buy",
+        "sell",
+        "hold"
+      ]
+    },
+    "price": {
+      "type": "number"
+    },
+    "timestamp": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "tradingview",
+        "mcp",
+        "bot"
+      ]
+    },
+    "userId": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
