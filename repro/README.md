@@ -1,35 +1,63 @@
-# AFI Paper Repro Pack (paper-2025-v2.2)
+# AFI Artifacts — Paper Reproducibility Bundle (snapshot: paper-2025-v2.2)
 
-This bundle contains the minimal replication artifacts referenced in *Agentic Financial Intelligence* (SSRN Q3 2025).  
-It is a **validation pack**: schemas, example records, Codex manifest, and a deterministic mock replay.  
-It does **not** include the AFI runtime, scorers, or DAG engine.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16857347.svg)](https://doi.org/10.5281/zenodo.16857347)  
+**Release tag:** [`paper-2025-v2.2`](https://github.com/AFI-Protocol/afi-artifacts/releases/tag/paper-2025-v2.2)
 
-## What’s here
-- `schemas/` — minimal JSON Schemas for snapshots shown in Appendix A (A.1/A.2/A.3).
-- `codex/.afi-codex.json` — example replay manifest used in Appendix C (hidden on macOS/Linux; visible twin also included).
-- `data/examples/` — a single **vault-ready** JSONL record (Appendix B) and a **valid proposal** example.
-- `tests/replay_smoke_test.md` — step-by-step smoke test (schema validation + deterministic mock replay).
-- `tests/mock_replay.js` — produces a reproducible “mock score” to demonstrate Codex/record wiring without the AFI engine.
+---
 
-## Quick Start (from `repro/`)
-```bash
-# Verify integrity
-shasum -a 256 -c SHA256SUMS
+## Overview  
 
-# Validate example record against schema
-while IFS= read -r l; do printf '%s\n' "$l" > /tmp/_afi_line.json; \
-  npx --yes ajv-cli validate -s schemas/vaulted_tssd.schema.json -d /tmp/_afi_line.json || exit 1; \
-done < data/examples/vault-ready-record.jsonl
-echo "All JSONL lines valid ✅"
+This repository contains the **official reproducibility bundle** for the AFI Protocol paper. It ensures that readers, reviewers, and developers can replicate results, inspect schemas, and verify codex integrity.  
 
-# Optional: deterministic mock replay
-node tests/mock_replay.js
+The **canonical release bundle** for v2.2 is packaged in the [release ZIP](https://github.com/AFI-Protocol/afi-artifacts/releases/tag/paper-2025-v2.2), and it matches the Zenodo snapshot.  
+
+---
+
+## What’s in this repo (actual v2.2 snapshot)  
+
+```
+repro/
+  README.md
+  schemas/
+    universal_signal_ingestion.schema.json
+    vaulted_tssd.schema.json
+    universal_proposal_schema.json
+  codex/
+    .afi-codex.json      # hidden on macOS/Linux
+    afi-codex.json       # visible twin
+  data/examples/
+    vault-ready-record.jsonl
+    valid-proposal.json
+  tests/
+    replay_smoke_test.md
+  tools/replay/afi-replay.js
+  SHA256SUMS
 ```
 
-## Versioning & Citation
-**Version:** `paper-2025-v2.2`  
-**Citation:** Please cite the **versioned Zenodo DOI (v2.2)**.
+---
 
-## Codex Note
-The Codex manifest is provided as both `.afi-codex.json` (hidden) and `afi-codex.json` (visible).  
-They are identical; cite the hidden form to match the paper, but reviewers may prefer the visible file for convenience.
+## Quick Start  
+
+1. Download the [release asset ZIP](https://github.com/AFI-Protocol/afi-artifacts/releases/tag/paper-2025-v2.2).  
+2. Verify integrity (optional):  
+   ```bash
+   shasum -a 256 afi-paper-artifact-bundle__paper-2025-v2.2.zip
+   # Expected: 7ad552c107a4cc6999ccaad51bdf93b5c990defb286f88e7c85312a5a53bb9c9
+   ```  
+3. Unzip and open `repro/README.md` to follow instructions.  
+4. Run the Replay Smoke Test to confirm reproducibility.  
+5. On macOS Finder, press **⌘⇧.** to reveal hidden files like `.afi-codex.json`.  
+
+---
+
+## Citation  
+
+- AFI-Protocol (2025). **AFI Paper Artifact Bundle (paper-2025-v2.2)** [Software]. Zenodo. https://doi.org/10.5281/zenodo.16857347  
+- *Agentic Financial Intelligence* (SSRN / arXiv)  
+
+---
+
+## Notes  
+
+- v2.2 is the **canonical release** — prior layout differences (v2.1) are no longer relevant.  
+- The **codex** is the authoritative registry of schema + replay context.  
