@@ -4,3 +4,4 @@ dist/
 *.local
 *.log
 afi-paper-artifact-bundle__paper-2025-v2.2.zip
+.DS_Store
