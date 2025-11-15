@@ -1,0 +1,17 @@
+{
+  "name": "afi-artifacts",
+  "version": "1.0.0",
+  "description": "AFI build artifacts and compiled outputs",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Build script TBD'",
+    "test": "echo 'Test script TBD'"
+  },
+  "keywords": ["afi", "artifacts", "build"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AFI-Protocol/afi-artifacts.git"
+  },
+  "license": "MIT"
+}
+
