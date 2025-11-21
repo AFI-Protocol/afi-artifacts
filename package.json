@@ -4,8 +4,11 @@
   "description": "AFI build artifacts and compiled outputs",
   "type": "module",
   "scripts": {
-    "build": "echo 'Build script TBD'",
-    "test": "echo 'Test script TBD'"
+    "build": "echo 'No build required for artifacts bundle'",
+    "test": "cd repro && ./scripts/check-repro.sh",
+    "test:repro": "cd repro && ./scripts/check-repro.sh",
+    "test:checksums": "cd repro && shasum -a 256 -c SHA256SUMS",
+    "test:replay": "cd repro && node tests/mock_replay.js"
   },
   "keywords": ["afi", "artifacts", "build"],
   "repository": {
