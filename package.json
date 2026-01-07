@@ -1,0 +1,20 @@
+{
+  "name": "afi-artifacts",
+  "version": "1.0.0",
+  "description": "AFI build artifacts and compiled outputs",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'No build required for artifacts bundle'",
+    "test": "cd repro && ./scripts/check-repro.sh",
+    "test:repro": "cd repro && ./scripts/check-repro.sh",
+    "test:checksums": "cd repro && shasum -a 256 -c SHA256SUMS",
+    "test:replay": "cd repro && node tests/mock_replay.js"
+  },
+  "keywords": ["afi", "artifacts", "build"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AFI-Protocol/afi-artifacts.git"
+  },
+  "license": "MIT"
+}
+

@@ -1,9 +1,9 @@
 // Deterministic mock replay for AFI paper artifact bundle
-// Pure CommonJS version (no warnings).
+// ESM version (compatible with package.json "type": "module").
 // Reads Codex manifest and vault-ready record, then outputs a reproducible mock score.
 
-const fs = require("fs");
-const crypto = require("crypto");
+import fs from "fs";
+import crypto from "crypto";
 
 // Load Codex manifest (visible twin for simplicity)
 const codex = JSON.parse(fs.readFileSync("codex/afi-codex.json", "utf8"));
